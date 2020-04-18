@@ -33,4 +33,7 @@ In der Datei „./Deployment Package/ManualSolution/manual_solution/src/app/serv
 
 ### Port Probleme bei automatischem Spielmodus
 Sollte der Port 50123 belegt sein, muss dieser in der GameAPI („Deployment Package/Automatic-Solution/api.py“ in Zeile 72) angepasst werden. Außerdem muss die game.exe mit selbigem Port als Ziel-URL gestartet werden 
+
+### Andere Probleme
+Sollten andere Probleme auftreten, kann dies daran liegen, dass wir das Projekt von Azure Devops kopiert haben und dabei eventuell Probleme entstanden sind. Wenn dies der fall ist, kontaktieren Sie uns bitte.
  
