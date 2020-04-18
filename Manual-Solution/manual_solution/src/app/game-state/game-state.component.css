@@ -1,0 +1,14 @@
+#playMode{
+    display: flex;
+    justify-content: space-between;
+}
+
+#gameState{
+    display: flex;
+    flex-direction: column;
+    height: 800px;
+}
+.action{
+    display: flex;
+    justify-content: center;
+}

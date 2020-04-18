@@ -1,0 +1,1 @@
+from game_handler.strategies import Strategy, Strategy1, Strategy11, Strategy2, Strategy3, Strategy4

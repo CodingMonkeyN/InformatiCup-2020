@@ -1,0 +1,99 @@
+<div id="gameState">
+    <!-- <mat-card class="action" *ngIf="gamemodeSelected">Gamemode: {{gamemode}}</mat-card> -->
+    <mat-card class="action" *ngIf="gamemode=='Automatic' && gameStarted && loaded" [matTooltip]="strategyTooltip">Current Strategy: {{currentStrategy}}</mat-card>
+    <mat-card class="action" *ngIf="gamemodeSelected && gamemode=='Automatic' && gameStarted && loaded && !pause"><button mat-button (click)="pauseGame()">{{pauseState}}</button></mat-card>
+    <mat-card class="action" *ngIf="!gameStarted && gamemodeSelected"><button mat-button (click)="startGame()">Start Game</button></mat-card>
+    <mat-card id="playMode" *ngIf="pause || !gamemodeSelected">
+        <button mat-button (click)="selectGamemode('Manual')">Manual</button>
+        <button mat-button color="warn" (click)="selectGamemode('Automatic')">Automatic</button>
+    </mat-card>
+    
+    <div *ngIf="gameStarted && gamemode == 'Manual' && loaded">
+      <mat-card class="action">
+        <mat-form-field>
+            <mat-label>Select Action</mat-label>
+            <mat-select [(ngModel)]="selected_action" (change)="actionSwitch()">
+              <mat-option *ngFor="let action of actions" [value]="action">
+                {{action.type}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-card>
+    <mat-card class="action" *ngIf="selected_action && selected_action.dependencies.includes('city')">
+        <mat-form-field>
+        <mat-label>City</mat-label>
+        <input matInput [formControl]="cityControl" type="text" placeholder="Pick City"  [matAutocomplete]="city" [(ngModel)]="action_information.city">
+        <mat-autocomplete #city="matAutocomplete">
+          <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+            {{city}}
+          </mat-option>
+        </mat-autocomplete>
+            <!-- <mat-select [(ngModel)]="action_information.city">
+              <mat-option *ngFor="let city of cities | keyvalue" [value]="city.key">
+                {{city.key}}
+              </mat-option>
+            </mat-select> -->
+        </mat-form-field>
+    </mat-card>
+    <mat-card class="action" *ngIf="selected_action && selected_action.dependencies.includes('toCity') && action_information.city && cities">
+        <mat-form-field>
+        <mat-label>To City</mat-label>
+            <mat-select [(ngModel)]="action_information.toCity">
+              <mat-option *ngFor="let city of cities[action_information.city].connections" [value]="city">
+                {{city}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-card>
+    <mat-card class="action" *ngIf="selected_action && selected_action.dependencies.includes('pathogen')">
+        <mat-form-field>
+        <mat-label>Select Pathogen</mat-label>
+            <mat-select [(ngModel)]="action_information.pathogen">
+              <mat-option *ngFor="let pathogen of pathogens" [value]="pathogen.name">
+                {{pathogen.name}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-card>
+    <mat-card class="action" *ngIf="selected_action && selected_action.dependencies.includes('rounds')">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Rounds" [(ngModel)]="action_information.rounds" type="number" >
+          </mat-form-field>
+    </mat-card>
+    <mat-card class="action" *ngIf="selected_action" [ngStyle]="(selected_action.base_cost + selected_action.cost_multiplier * action_information.rounds) > points && {'color': 'red'}">
+        Costs:
+        {{selected_action.base_cost}} + ({{selected_action.cost_multiplier}} x {{action_information.rounds}}) = {{selected_action.base_cost + selected_action.cost_multiplier * action_information.rounds}}
+    </mat-card>
+    <mat-card class="action">
+        Available Points: {{points}}
+    </mat-card>
+    <mat-card class="action" *ngIf="selected_action && loaded">
+        <button mat-button *ngIf="(selected_action.base_cost + selected_action.cost_multiplier * action_information.rounds) <= points" (click)="submitAction()">Send Action</button>
+        <button mat-button (click)="resetAll()">Reset</button>
+    </mat-card>
+    <mat-card class="action" *ngIf="!selected_action"><button mat-button color="primary" (click)="endRound()">End Round</button></mat-card>
+    <mat-card class="action" *ngIf="result== 1 && showResult"><mat-chip-list aria-label="Fish selection"><mat-chip style="background-color: green" selected>Action successful send!</mat-chip></mat-chip-list></mat-card>
+    <mat-card class="action" *ngIf="result== 2 && showResult"><mat-chip-list aria-label="Fish selection"><mat-chip style="background-color: red" selected>There was an error sending your action!</mat-chip></mat-chip-list></mat-card>
+    </div>
+    <mat-card class="action" *ngIf="!loaded && gameStarted && !round">Waiting for game.exe to be started...</mat-card>
+    <mat-card class="action" *ngIf="!loaded && gameStarted && round && gamemode == 'Manual'">Waiting for next round data...</mat-card>
+    <mat-card class="action" *ngIf="!loaded && gameStarted"><mat-spinner style="stroke: blue;"></mat-spinner></mat-card>
+    <mat-card class="action" *ngIf="gameStarted && gamemode == 'Automatic' && loaded">
+      Available Points: {{points}}
+    </mat-card>
+    <mat-card class="action" *ngIf="gameFinished">
+      <button mat-button (click)="resetGame()">Restart Game</button>
+    </mat-card>
+    <mat-card class="action" *ngIf="gameStarted && gameActions.length > 0">Round History:</mat-card>
+    <mat-card *ngIf="gameStarted" style="height: 100%; overflow-y:scroll;">
+      <ul *ngFor="let action of gameActions" style="padding:0px">
+        <li style="list-style-type: none;">
+          <mat-card class="action" style="padding-top: 10px; padding-bottom: 10px; flex-direction: column;">
+            <p>{{action.action}}</p>
+            <p style="font-size: small;" *ngIf="gamemode == 'Automatic'">Strategy: {{action.strategy}}</p>
+            <p style="font-size: small;">Round: {{action.round}}</p>
+          </mat-card>
+        </li>
+      </ul>
+    </mat-card>
+</div>

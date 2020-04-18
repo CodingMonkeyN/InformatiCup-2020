@@ -1,0 +1,68 @@
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" >
+
+    <!-- Round Column -->
+    <ng-container matColumnDef="round">
+      <th class= mat-header-cell *matHeaderCellDef> Round </th>
+      <td mat-cell *matCellDef="let element"> {{element.round}} </td>
+    </ng-container>
+  
+    <!-- Type Column -->
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef> Type </th>
+      <td style="height: 30px" mat-cell *matCellDef="let element"> {{element.type}} </td>
+    </ng-container>
+    
+    <!-- Pathogen Column -->
+    <ng-container matColumnDef="pathogen">
+        <th mat-header-cell *matHeaderCellDef> Pathogen </th>
+        <td mat-cell *matCellDef="let element"> {{element.pathogen}} </td>
+      </ng-container>
+
+    <!-- Infectivity Column -->
+    <ng-container matColumnDef="infectivity">
+    <th mat-header-cell *matHeaderCellDef> Infectivity </th>
+    <td mat-cell *matCellDef="let element"> {{element.infectivity}} </td>
+    </ng-container>
+
+    <!-- Mobility Column -->
+    <ng-container matColumnDef="mobility">
+    <th mat-header-cell *matHeaderCellDef> Mobility </th>
+    <td mat-cell *matCellDef="let element"> {{element.mobility}} </td>
+    </ng-container>
+
+    <!-- Duration Column -->
+    <ng-container matColumnDef="duration">
+    <th mat-header-cell *matHeaderCellDef> Duration </th>
+    <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+    </ng-container>
+    
+    <!-- Lethality Column -->
+    <ng-container matColumnDef="lethality">
+    <th mat-header-cell *matHeaderCellDef> Lethality </th>
+    <td mat-cell *matCellDef="let element"> {{element.lethality}} </td>
+    </ng-container>
+
+    <!-- Prevalence Column -->
+    <ng-container matColumnDef="prevalence">
+    <th mat-header-cell *matHeaderCellDef> Prevalence </th>
+    <td mat-cell *matCellDef="let element"> {{element.prevalence}} </td>
+    </ng-container>
+
+    <!-- Since Round Column -->
+    <ng-container matColumnDef="sinceRound">
+    <th mat-header-cell *matHeaderCellDef> Since Round </th>
+    <td mat-cell *matCellDef="let element"> {{element.sinceRound}} </td>
+    </ng-container>
+
+    <!-- Until Round Column -->
+    <ng-container matColumnDef="untilRound">
+    <th mat-header-cell *matHeaderCellDef> Until Round </th>
+    <td mat-cell *matCellDef="let element"> {{element.untilRound}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" style="height: 30px"></tr>
+    <tr (click)="pathogenSelected(row)" [ngStyle]="setStyles(row)" style="height: 30px" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[3]" showFirstLastButtons></mat-paginator>
+</div>

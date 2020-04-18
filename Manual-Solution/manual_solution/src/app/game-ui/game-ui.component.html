@@ -1,0 +1,17 @@
+<div id="gameUIWrapper">
+    <div id="eventsWrapper">
+        <app-events (selectedPathogen)="onSelectedPathogenChanged($event)" [colors]="colors"[events]="events"></app-events>
+    </div>
+    <div class="row">
+        <div class="col-2" style="padding-right: 0px; ">
+            <app-game-state (currentRound)="onCurrentRoundChanged($event)" [city]="city" (globalEvents)="onGlobalEventChanged($event)"></app-game-state>
+        </div>
+        <div class="col-8" style="padding-left: 0px; padding-right: 0px;">
+            <app-map (selectedCity)="onSelectedCityChanged($event)" [colors]="colors" [pathogen]="pathogen" [outcome]="game_state?.outcome" [reset]="reset" [cities]="game_state?.cities" [currentRound]="game_state?.round"></app-map>
+        </div>
+        <div class="col-2" style="padding-left: 0px;">                    
+            <app-details (selectedCity)="onSelectedCityChanged($event)" [city]="city" [reset]="reset" [cities]="game_state?.cities"></app-details>
+        </div>                
+    </div>        
+</div>
+

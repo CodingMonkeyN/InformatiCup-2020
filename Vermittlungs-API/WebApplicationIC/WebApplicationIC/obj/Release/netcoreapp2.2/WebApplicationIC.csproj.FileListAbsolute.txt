@@ -1,0 +1,16 @@
+C:\Users\Rouven\Desktop\WebApplicationIC (1)\WebApplicationIC\WebApplicationIC\bin\Release\netcoreapp2.2\appsettings.Development.json
+C:\Users\Rouven\Desktop\WebApplicationIC (1)\WebApplicationIC\WebApplicationIC\bin\Release\netcoreapp2.2\appsettings.json
+C:\Users\Rouven\Desktop\WebApplicationIC (1)\WebApplicationIC\WebApplicationIC\bin\Release\netcoreapp2.2\Properties\launchSettings.json
+C:\Users\Rouven\Desktop\WebApplicationIC (1)\WebApplicationIC\WebApplicationIC\bin\Release\netcoreapp2.2\WebApplicationIC.deps.json
+C:\Users\Rouven\Desktop\WebApplicationIC (1)\WebApplicationIC\WebApplicationIC\bin\Release\netcoreapp2.2\WebApplicationIC.runtimeconfig.json
+C:\Users\Rouven\Desktop\WebApplicationIC (1)\WebApplicationIC\WebApplicationIC\bin\Release\netcoreapp2.2\WebApplicationIC.runtimeconfig.dev.json
+C:\Users\Rouven\Desktop\WebApplicationIC (1)\WebApplicationIC\WebApplicationIC\bin\Release\netcoreapp2.2\WebApplicationIC.dll
+C:\Users\Rouven\Desktop\WebApplicationIC (1)\WebApplicationIC\WebApplicationIC\bin\Release\netcoreapp2.2\WebApplicationIC.pdb
+C:\Users\Rouven\Desktop\WebApplicationIC (1)\WebApplicationIC\WebApplicationIC\obj\Release\netcoreapp2.2\WebApplicationIC.csprojAssemblyReference.cache
+C:\Users\Rouven\Desktop\WebApplicationIC (1)\WebApplicationIC\WebApplicationIC\obj\Release\netcoreapp2.2\WebApplicationIC.RazorAssemblyInfo.cache
+C:\Users\Rouven\Desktop\WebApplicationIC (1)\WebApplicationIC\WebApplicationIC\obj\Release\netcoreapp2.2\WebApplicationIC.RazorAssemblyInfo.cs
+C:\Users\Rouven\Desktop\WebApplicationIC (1)\WebApplicationIC\WebApplicationIC\obj\Release\netcoreapp2.2\WebApplicationIC.AssemblyInfoInputs.cache
+C:\Users\Rouven\Desktop\WebApplicationIC (1)\WebApplicationIC\WebApplicationIC\obj\Release\netcoreapp2.2\WebApplicationIC.AssemblyInfo.cs
+C:\Users\Rouven\Desktop\WebApplicationIC (1)\WebApplicationIC\WebApplicationIC\obj\Release\netcoreapp2.2\WebApplicationIC.RazorTargetAssemblyInfo.cache
+C:\Users\Rouven\Desktop\WebApplicationIC (1)\WebApplicationIC\WebApplicationIC\obj\Release\netcoreapp2.2\WebApplicationIC.dll
+C:\Users\Rouven\Desktop\WebApplicationIC (1)\WebApplicationIC\WebApplicationIC\obj\Release\netcoreapp2.2\WebApplicationIC.pdb

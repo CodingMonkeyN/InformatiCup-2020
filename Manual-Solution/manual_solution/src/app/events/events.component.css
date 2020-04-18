@@ -1,0 +1,19 @@
+table {
+    width: 100%;
+  }
+  
+.row{
+  height: 30px;
+}
+:host ::ng-deep.mat-paginator{
+  padding-top: 10px;
+}
+
+:host ::ng-deep.mat-paginator-container{
+  height: 30px !important;
+  min-height: 30px !important;
+  padding-bottom: 0px !important;
+  padding-top: 8px !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
